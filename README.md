@@ -15,17 +15,19 @@
 8. [More](#more)
 
 <h2 id="description"> Project Description </h2>
-A professional portfolio is an excellent way to present your work to potential employers and display the skills that qualify you for a position; it can contain proof of your skills, samples, visual demonstrations of your craft and letters of recommendation along with your resume. This React Professional Portfolio has been built from scratch and I have added skills and projects along the way during my certification.
+Book Search Engine is an application that allows the users searching for their favorite books; we use Google API and MERN stack connected by React apollo.
 
 ## Installation 
-Requiered dependencies: react,bootstrap, react-pdf, scripts, router-dom, dom.
+Some of the tools utilized to develop Book Search Engine are: nodeJS, MongoDB, Mongoose, Apollo, React, Graphql and Google Book API.
 
 ## Usage 
-An online portfolio allows you to share your work with a wider audience and can be accessed when your audience has time dedicated to review your breadth of work. It is important to have a portfolio with deployed web applications so the companies and future employers will see and have a better idea of your work and skills.
-![Evelyn React Portfolio - Home page".](./assets/port1.png)
-![Evelyn React Portfolio - Projects page".](./assets/porf2.png)
-![Evelyn React Portfolio - Resume page".](./assets/proj3.png)
-![Evelyn React Portfolio - Contact page".](./assets/proj4.png)
+When the user visits Search Book Engine App, they will presented with the option to signup, login and search for books. Once el user has logged in, then they will have the option to save a book, delete a book and see their saved book list. Every book comes with the next information: title, author, description and image of the book.
+
+![Book Search Engine - Signup".](./assets/book1.png)
+![Book Search Engine - Login".](./assets/book2.png)
+![Book Search Engine - Find a book".](./assets/book3.png)
+![Book Search Engine- Save a book".](./assets/book4.png)
+![Book Search Engine- List of your saved books".](./assets/book5.png)
 
 ## License 
 This application is covered under the GNU GPLv3.0 License.
@@ -45,7 +47,7 @@ If you have any questions, please contact me to the information listed below.
 ## More
 
 * Link to the GitHub Repository:
-[React Portfolio](https://github.com/EvelynGMaldonado/evelyngm_portfolio)
+[Book Search Engine](https://github.com/EvelynGMaldonado/BookSearch_engine)
 
 * Url to the deployed application:
-[React Portfolio](https://evelyngmaldonado-portfolio.herokuapp.com/)
+[Book Search Engine](https://egm-booksearcher.herokuapp.com/)
