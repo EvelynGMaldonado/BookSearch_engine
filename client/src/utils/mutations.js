@@ -8,36 +8,38 @@ mutation addUser($username: String!, $email: String!, $password: String!) {
         user {
             _id
             username
+            email
         }
     }
 }`;
 
 //graphQL mutation query that will be executed by Apollo Client and will log in
 export const LOGIN_USER =gql`
-mutation loginUser($email: String!, $password: String!) {
+mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
         token
         user {
             _id
+            email
+            username
         }
     }
 }`;
 
 //graphQL mutation query that will be executed by Apollo Client, it will be called saveBook and it will add a new book to the database
 export const SAVE_BOOK =gql`
-mutation saveBook($input: savedBook!) {
-    saveBook(input: $input) {
+# mutation saveBook($input: savedBook!) {
+    mutation saveBook($dataBook: BookInput!) {
+    saveBook(dataBook: $dataBook) {
         _id
         username
         email
         bookCount
         savedBooks {
-            # _id
             bookId
             authors
             link
             description
-            bookId
             image
             title
         }
@@ -46,17 +48,16 @@ mutation saveBook($input: savedBook!) {
 
 //graphQL mutation query that will be executed by Apollo Client, it will be called removeBook and will delete a book from the database
 export const REMOVE_BOOK =gql`
-mutation removeBook($bookId: ID!) {
+mutation removeBook($bookId: String!) {
     removeBook(bookId: $bookId) {
         _id
         username
         email
-        bookCount
+        # bookCount
         savedBooks {
-            # _id
+            bookId
             authors
             description
-            bookId
             image
             link
             title

@@ -14,13 +14,13 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
-  bodyParserOptions: {limit: "128mb", type: "application/json" },
+  // bodyParserOptions: {limit: "128mb", type: "application/json" },
 });
 
 
 
-app.use(express.urlencoded({ extended: false, limit: "64mb"  }));
-app.use(express.json({limit: '64mb'}));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 server.applyMiddleware({ app });
 

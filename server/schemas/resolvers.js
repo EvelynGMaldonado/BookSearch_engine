@@ -15,20 +15,21 @@ const resolvers = {
         })
         .select("-__v -password");
         const userPopulate = await userData.populate("savedBooks").execPopulate();
+        console.log("me query: ", userPopulate)
         return userData;
       }
       throw new AuthenticationError("User is not logged in")
     },
-    findBook: async (parent, {args, context}) => {
-      //if context has an 'user property' then it means that the user excecuting this query has a valid JWT and is already logged in
-      if(context.savedBook) {
-        const bookData = await Book.findOne({
-          title: context.savedBooks.title
-        }).populate("savedBooks");
-        return bookData;
-      }
-      throw new AuthenticationError("User is not logged in")
-    },
+    // findBook: async (parent, {args, context}) => {
+    //   //if context has an 'user property' then it means that the user excecuting this query has a valid JWT and is already logged in
+    //   if(context.savedBook) {
+    //     const bookData = await Book.findOne({
+    //       title: context.savedBooks.title
+    //     }).populate("savedBooks");
+    //     return bookData;
+    //   }
+    //   throw new AuthenticationError("User is not logged in")
+    // },
   },
   Mutation: {
     //creates a single user an a jwt token for that user
@@ -63,34 +64,35 @@ const resolvers = {
       return { token, user };
     },
     //when we add context to the query, then i can retrieve the logged in user without have to specififally look for it.
-  removeBook: async (parent, args, context) => {
+  removeBook: async (parent, {bookId}, context) => {
     //if context has an 'user property' then it means that the user excecuting this query has a valid JWT and is already logged in
     if(context.user) {
-      const updateUser = await User.findOneAndUpdate({
+      const updatedUser = await User.findOneAndUpdate({
         _id:context.user._id
       },
       //delete the book based on the book ID from the db
-      { $pull: { savedBooks: { bookId: args.bookId } } },
+      { $pull: { savedBooks: { bookId: bookId} } },
       { new: true }
       );
-      return updateUser;
+      return updatedUser;
     }
     //if usert attempts to execute this update mutation and it is not logged in, then I need to throw an error
     throw new AuthenticationError("User is not logged in");
   },
    // when we add context to the query, then i can retrieve the logged in user without have to specififally look for it.
-   saveBook: async (parent, args, context) => {
+    saveBook: async (parent, { dataBook }, context) => {
     //if context has an 'user property' then it means that the user excecuting this query has a valid JWT and is already logged in
     if(context.user) {
-      const updateUser = await User.findOneAndUpdate({
+      const updatedUser = await User.findOneAndUpdate({
         _id:context.user._id
       },
       //push the book to an array of books associated with this user
-      { $addToSet: { savedBooks: args.input } },
-      { new: true,
-      runValidators: true }
+      { $addToSet: { savedBooks: dataBook} },
+      { new: true
+      // runValidators: true 
+    }
       );
-      return updateUser;
+      return updatedUser;
     }
     //if usert attempts to execute this update mutation and it is not logged in, then I need to throw an error
     throw new AuthenticationError("User is not logged in");
