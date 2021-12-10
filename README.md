@@ -23,11 +23,11 @@ Some of the tools utilized to develop Book Search Engine are: nodeJS, MongoDB, M
 ## Usage 
 When the user visits Search Book Engine App, they will presented with the option to signup, login and search for books. Once el user has logged in, then they will have the option to save a book, delete a book and see their saved book list. Every book comes with the next information: title, author, description and image of the book.
 
-![Book Search Engine - Signup".](./assets/book1.png)
-![Book Search Engine - Login".](./assets/book2.png)
-![Book Search Engine - Find a book".](./assets/book3.png)
-![Book Search Engine- Save a book".](./assets/book4.png)
-![Book Search Engine- List of your saved books".](./assets/book5.png)
+![Book Search Engine - Signup".](./client/assets/book1.png)
+![Book Search Engine - Login".](./client/assets/book2.png)
+![Book Search Engine - Find a book".](./client/assets/book3.png)
+![Book Search Engine- Save a book".](./client/assets/book4.png)
+![Book Search Engine- List of your saved books".](./client/assets/book5.png)
 
 ## License 
 This application is covered under the GNU GPLv3.0 License.
